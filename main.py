@@ -37,16 +37,16 @@ with open('model.pkl', 'rb') as file:
                 "Age": data['Age']
             }])
 
-            # Melakukan prediksi dengan model yang sudah dimuat
+            # Melakukan prediksi dengan model
             prediction = model.predict(input_data)
             # Mendapatkan probabilitas prediksi
             probabilities = model.predict_proba(input_data)
-            # Probabilitas positif dan negatif dalam bentuk persentase
+            # Probabilitas positif dan negatif persentase
             probability_negative = probabilities[0][0] * 100 # Probabilitas untuk kelas 0 (negatif)
             probability_positive = probabilities[0][1] * 100 # Probabilitas untuk kelas 1 (positif)
             # Prediksi output (0 atau 1, di mana 1 berarti positif diabetes)
             if prediction[0] == 1:
-                result = f'Anda memiliki peluang menderita diabetes berdasarkan model KNN kami. Kemungkinan menderita diabetes adalah {probability_positive:.2f}%.'
+                result = f'Anda memiliki peluang penyakit diabetes berdasarkan model KNN kami. Kemungkinan menderita diabetes adalah {probability_positive:.2f}%.'
             else:
                 result = 'Hasil prediksi menunjukkan Anda kemungkinan rendah terkena diabetes.'
             # Kembalikan hasil prediksi dan probabilitas dalam bentuk JSON
